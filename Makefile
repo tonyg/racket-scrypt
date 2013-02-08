@@ -17,8 +17,7 @@ $(SHAREDLIB): $(SCRYPTUNPACKED)
 		++ldf "-I" ++ldf "$(SCRYPTUNPACKED)" \
 		++ldf "-I" ++ldf "$(SCRYPTUNPACKED)/lib/util" \
 		--ld $@ \
-		`find $(SCRYPTUNPACKED)/lib/crypto -name '*.c'` \
-		-lssl -lcrypto
+		`find $(SCRYPTUNPACKED)/lib/crypto -name '*.c'`
 
 clean:
 	rm -f $(SHAREDLIB)
@@ -27,5 +26,6 @@ clean:
 $(SCRYPTUNPACKED): $(SCRYPTUNPACKED).tgz
 	tar -zxvf $<
 	cp config.h $(SCRYPTUNPACKED)
+	rm $(SCRYPTUNPACKED)/lib/crypto/crypto_aesctr.*
 	rm $(SCRYPTUNPACKED)/lib/crypto/crypto_scrypt-nosse.c
 	rm $(SCRYPTUNPACKED)/lib/crypto/crypto_scrypt-sse.c

@@ -2,7 +2,6 @@
 
 (require racket/match)
 (require "main.rkt")
-(require openssl/sha1)
 
 (require rackunit)
 
