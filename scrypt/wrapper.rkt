@@ -12,12 +12,13 @@
 ;; FFI
 
 (define (local-lib-dirs)
-  (list* "."
-	 (with-handlers ((exn:fail? (lambda (e) ".")))
-	   (collection-path "scrypt"))
-	 (get-lib-search-dirs)))
+  (list (build-path (collection-path "scrypt")
+		    "private"
+		    "compiled"
+		    "native"
+		    (system-library-subpath))))
 
-(define scrypt-lib (ffi-lib "scrypt" #:get-lib-dirs local-lib-dirs))
+(define scrypt-lib (ffi-lib "racket-scrypt" #:get-lib-dirs local-lib-dirs))
 
 (define-ffi-definer define-scrypt scrypt-lib
   #:default-make-fail make-not-available)
