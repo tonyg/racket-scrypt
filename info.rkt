@@ -12,4 +12,5 @@
 (define pre-install-collection "private/install.rkt")
 (define compile-omit-files '("private/install.rkt"))
 
-(define deps '("base" "dynext-lib" "rackunit-lib"))
+(define deps '("srfi-lite-lib"
+               "base" "dynext-lib" "rackunit-lib"))
