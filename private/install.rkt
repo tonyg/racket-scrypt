@@ -16,7 +16,8 @@
 (define (pre-installer collections-top-path racl-path)
   (define private-path (build-path racl-path "private"))
 
-  (parameterize ((current-directory private-path))
+  (parameterize ((current-directory private-path)
+                 (current-use-mzdyn #f))
     (define unpacked-path (build-path private-path SCRYPTUNPACKED))
     (define shared-object-target-path (build-path private-path
 						  "compiled"
